@@ -12,7 +12,7 @@ const categorias = [
       {
         url: "/productos",
         nombre: "Productos",
-        id:1
+        id:2
       },
 ]
 
