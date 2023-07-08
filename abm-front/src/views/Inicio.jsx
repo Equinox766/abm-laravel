@@ -2,7 +2,10 @@ export default function Inicio() {
   return (
     <aside>
       <div className="flex h-screen">
-        <h1 className="m-auto text-3xl text-slate-950">Hola Mundo</h1>
+        <div className="m-auto ">
+          <h1 className="text-3xl text-slate-200">Hola Mundo</h1>
+          <p>En el Sidebar tenes las rutas a las paginas Productos y Categorías</p>
+        </div>
       </div>
     </aside>
   )
