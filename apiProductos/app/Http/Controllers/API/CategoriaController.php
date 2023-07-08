@@ -16,7 +16,7 @@ class CategoriaController extends AppBaseController
      */
     public function index(): JsonResponse
     {
-        $categorias = Cache::remember('categorias', 60, function () {
+        $categorias = Cache::remember('categorias', 600, function () {
             return [];
         });
         return $this->sendResponse($categorias);
@@ -36,13 +36,13 @@ class CategoriaController extends AppBaseController
             'descripcion' => $data['descripcion'],
         ];
 
-        $categorias = Cache::remember('categorias', 60, function () use ($categoria) {
+        $categorias = Cache::remember('categorias', 600, function () use ($categoria) {
             return [];
         });
 
         $categorias[] = $categoria;
 
-        Cache::put('categorias', $categorias, 60);
+        Cache::put('categorias', $categorias, 600);
 
         return $this->sendSuccess('Registro agregado correctamente');
     }
@@ -96,7 +96,7 @@ class CategoriaController extends AppBaseController
             return $item;
         }, $categorias);
 
-        Cache::put('categorias', $categorias, 60);
+        Cache::put('categorias', $categorias, 600);
 
         return $this->sendSuccess('Se ha dado de alta correctamente');
     }
@@ -124,7 +124,7 @@ class CategoriaController extends AppBaseController
             return $item;
         })->all();
 
-        Cache::put('categorias', $categorias, 60);
+        Cache::put('categorias', $categorias, 600);
 
         return $this->sendSuccess('Estado de la categoría actualizada');
     }

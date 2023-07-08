@@ -16,7 +16,7 @@ class ProductoController extends AppBaseController
      */
     public function index(): JsonResponse
     {
-        $productos = Cache::remember('productos', 60, function () {
+        $productos = Cache::remember('productos', 600, function () {
             return [];
         });
         return $this->sendResponse($productos);
@@ -38,13 +38,13 @@ class ProductoController extends AppBaseController
             'categoria_id' => $data['categoria_id'],
         ];
 
-        $productos = Cache::remember('productos', 60, function () use ($producto) {
+        $productos = Cache::remember('productos', 600, function () use ($producto) {
             return [];
         });
 
         $productos[] = $producto;
 
-        Cache::put('productos', $productos, 60);
+        Cache::put('productos', $productos, 600);
 
         return $this->sendSuccess('Registro agregado correctamente');
     }
@@ -100,7 +100,7 @@ class ProductoController extends AppBaseController
             return $item;
         }, $productos);
 
-        Cache::put('productos', $productos, 60);
+        Cache::put('productos', $productos, 600);
 
         return $this->sendSuccess('Se ha dado de alta correctamente');
     }
@@ -128,7 +128,7 @@ class ProductoController extends AppBaseController
             return $item;
         })->all();
 
-        Cache::put('productos', $productos, 60);
+        Cache::put('productos', $productos, 600);
 
         return $this->sendSuccess('Estado del producto actualizado');
     }
