@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 
 const ProductoContext = createContext();
 const ProductoProvider = ({children}) => {
-    const [errores, setErrores] = useState()
     const [inputError, setInputErrores] = useState([])
 
     const storeProducto = async (datos, handleLimpiarCampos) => {
@@ -21,10 +20,10 @@ const ProductoProvider = ({children}) => {
         try {
             const {data} = await clienteAxios.patch(`/api/productos/${id}`,datos)
             handleLimpiarCampos()
-            toast.info(data.message)
+            console.log(data);
+            // toast.info(data.message)
         } catch (error) {
-            console.log(error);
-            // setInputErrores(Object.values(error.response.data)[1])
+            setInputErrores(Object.values(error.response.data)[1])
         }
     }
 
@@ -34,7 +33,7 @@ const ProductoProvider = ({children}) => {
             handleLimpiarCampos()
             toast.info(message)
         } catch (error) {
-            callErrors(error);
+            console.log(error);
         }
     }
     const storeCategoria = async (datos, handleLimpiarCampos) => {
@@ -53,8 +52,7 @@ const ProductoProvider = ({children}) => {
             handleLimpiarCampos()
             toast.info(data.message)
         } catch (error) {
-            console.log(error);
-            // setInputErrores(Object.values(error.response.data)[1])
+            setInputErrores(Object.values(error.response.data)[1])
         }
     }
 
@@ -64,19 +62,10 @@ const ProductoProvider = ({children}) => {
             handleLimpiarCampos()
             toast.info(message)
         } catch (error) {
-            callErrors(error);
+            console.log(error);
         }
     }
     
-    const callErrors = error => {
-        console.log(error);
-        // setErrores(Object.values(error.response.data.errors));
-        // errores ? errores.map((error, i) => {
-        //     toast.error(`${error}`,{
-        //         toastId: i        
-        //     })
-        // }) : null 
-    }
     return (
         <ProductoContext.Provider
             value={{
@@ -86,7 +75,6 @@ const ProductoProvider = ({children}) => {
                 storeCategoria,
                 updateCategoria,
                 destroyCategoria,
-                callErrors,
                 inputError,
                 setInputErrores,
             }}

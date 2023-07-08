@@ -10,7 +10,7 @@ export default function Categorias() {
     const fetcher = () => clienteAxios('/api/categorias').then(data => data.data)  
     const { data, isLoading, mutate } = useSWR('/api/categorias', fetcher)
 
-    const { storeCategoria, updateCategoria, destroyCategoria, callErrors, inputError, setInputErrores} = useProductos()
+    const { storeCategoria, updateCategoria, destroyCategoria, inputError, setInputErrores} = useProductos()
 
     
     const descripcionRef = createRef();
@@ -39,6 +39,7 @@ export default function Categorias() {
             } else {
                 descripcionRef.current.value  = datos.descripcion,
                 setIdCategoria(datos.id)
+                setEditando(true)
             }
         } catch (error) {
             console.log(error)

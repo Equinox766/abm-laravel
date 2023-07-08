@@ -9,9 +9,7 @@ import useSWR from "swr"
 export default function Productos() {
     const fetcher = () => clienteAxios('/api/productos').then(data => data.data)  
     const { data, isLoading, mutate } = useSWR('/api/productos', fetcher)
-
-    const { storeProducto, updateProducto, destroyProducto, callErrors, inputError, setInputErrores} = useProductos()
-
+    const { storeProducto, updateProducto, destroyProducto, inputError, setInputErrores} = useProductos()
     
     const precioRef      = createRef();
     const descripcionRef = createRef();
@@ -36,8 +34,7 @@ export default function Productos() {
         e.preventDefault()
         if(
             precioRef.current.value      === '' &&
-            descripcionRef.current.value === '' &&
-            idCategoriaRef.current.value === '' 
+            descripcionRef.current.value === '' 
         ){
             toast.error("Todos los campos del formulario son obligatorios")
         }else{
@@ -84,7 +81,6 @@ export default function Productos() {
     useEffect(() => {
         if (editando) {
         const categoriaActual = categoria.find((categoria) => categoria.id === categoria.id);
-        console.log(categoriaActual);
         idCategoriaRef.current.value = categoriaActual ? categoriaActual : "";
         }
     }, [editando]);

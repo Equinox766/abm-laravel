@@ -4,27 +4,11 @@ import { useEffect, useState } from "react"
 import clienteAxios from "../config/axios"
 export default function Producto({producto, onUpdate, onDestroy}) {
     const { id, descripcion,  precio, categoria_id, estado} = producto;
-    const [categoria, setCategoria] = useState([]);
          
     const handleEditar = (id) => {
       onUpdate(id); // Invocar la función de devolución de llamada y pasar el ID
     };
   
-
-    useEffect(() => {
-      // Realizar la llamada a la API para obtener las categorías
-      obtenerCategorias();
-    }, []);
-    
-    const obtenerCategorias = async () => {
-      try {
-          const {data} = await clienteAxios.get('/api/categorias')
-          setCategoria(data);
-      } catch (error) {
-          console.log(error)
-      }
-  }
-
     const handleDestroy = (id) => {
       Swal.fire({
         title: `Estas seguro de ${estado ? "desactivar" : "activar"} el producto?`,
@@ -46,13 +30,6 @@ export default function Producto({producto, onUpdate, onDestroy}) {
       });
     };
 
-    const getCategoriaDescripcion = () => {
-      if (categoria && categoria_id) {
-        const categoriaEncontrada = categoria.find(cat => cat.id === categoria_id);
-        return categoriaEncontrada ? categoriaEncontrada.descripcion : "Sin Categoría";
-      }
-      return "Sin Categoría";
-    };
   return (
     <>
         <tbody className="divide-y divide-gray-200">
@@ -64,10 +41,10 @@ export default function Producto({producto, onUpdate, onDestroy}) {
                     {precio}
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-300 whitespace-nowrap">
-                    {estado === true ? "Activo" : "No Activo"}
+                  {estado ? "Activo" : "No Activo"}
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-300 whitespace-nowrap">
-                  {getCategoriaDescripcion()}
+                  {categoria_id ? categoria_id.descripcion : "Sin Categoría"}
                 </td>
                 <td className="flex flex-row mt-2  items-center gap-3">
                 <button
