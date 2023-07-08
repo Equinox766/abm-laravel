@@ -9,7 +9,7 @@ export default function Sidebar() {
     <aside className="flex flex-col justify-between bg-slate-800">
       <div className="p-4 h-10 text-center">
         <h1 className="text-slate-400 text-4xl  font-bold">
-            SIMPLE<span className="font-extrabold text-teal-400">ABM</span>
+            TEST<span className="font-extrabold text-teal-400">ABM</span>
         </h1>
       </div>      
       <div className='mt-10 flex-1'>
