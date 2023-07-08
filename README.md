@@ -8,6 +8,8 @@ ABM hecho con Laravel y React
    ```shell
    git clone https://github.com/Equinox766/abm-laravel.git
 
+   cd amb-laravel
+
 2. Instala las dependencias del back-end asegurate de tener composer instalado :
 
    cd apiProductos
