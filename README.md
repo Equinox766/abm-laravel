@@ -8,33 +8,35 @@ ABM hecho con Laravel y React
    ```shell
    git clone https://github.com/Equinox766/abm-laravel.git
 
-   cd amb-laravel
+2. Accede a la carpeta del proyecto
 
-2. Instala las dependencias del back-end asegurate de tener composer instalado :
+   cd abm-laravel
+
+3. Instala las dependencias del back-end asegurate de tener composer instalado :
 
    cd apiProductos
 
    composer install
 
-3. Configura el entorno de desarrollo del back-end:
+4. Configura el entorno de desarrollo del back-end:
 
    cp .env.example .env
    
    php artisan key:generate
    
-4. Inicia el servidor de desarrollo del back-end:
+5. Inicia el servidor de desarrollo del back-end:
    
    php artisan serve
 
    El servidor de desarrollo se ejecutará en http://localhost:8000.
    
-6. Instala las dependencias del front-end asegurate de tener nodejs instalado :
+7. Instala las dependencias del front-end asegurate de tener nodejs instalado :
 
    cd abm-front
 
    npm install
 
-7. Inicia el servidor de desarrollo del front-end:
+8. Inicia el servidor de desarrollo del front-end:
 
    npm run dev
 
