@@ -20,8 +20,7 @@ const ProductoProvider = ({children}) => {
         try {
             const {data} = await clienteAxios.patch(`/api/productos/${id}`,datos)
             handleLimpiarCampos()
-            console.log(data);
-            // toast.info(data.message)
+            toast.info(data.message)
         } catch (error) {
             setInputErrores(Object.values(error.response.data)[1])
         }
