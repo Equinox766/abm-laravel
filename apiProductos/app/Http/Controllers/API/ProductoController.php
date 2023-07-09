@@ -9,7 +9,6 @@ use App\Http\Requests\ProductoRequest;
 use App\Http\Resources\ProductoResource;
 use App\Http\Resources\CategoriaResource;
 use App\Http\Controllers\AppBaseController;
-use PhpParser\Node\Stmt\Return_;
 
 class ProductoController extends AppBaseController
 {

@@ -21,6 +21,7 @@ export default function Categorias() {
     const handleLimpiarCampos = () => {
         descripcionRef.current.value = '',
         mutate()
+        setEditando(false)
         setInputErrores([])
     }
     const handleSubmit = async e => {
